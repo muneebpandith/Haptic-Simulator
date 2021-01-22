@@ -1,0 +1,675 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot name="robot_hand">
+   <!-- LINKS -->
+   <link name="world"/>
+   <link name="forearm">
+      <visual>
+         <origin xyz="0 0 0.05" rpy="0 0 0" />
+         <geometry>
+            <box size="0.05 0.06 0.1" />
+         </geometry>
+         <material name="Cyan1">
+            <color rgba="0 0.9 0.9 1.0" />
+         </material>
+      </visual>
+      <collision>
+         <geometry>
+            <box size="0.05 0.06 0.1" />
+         </geometry>
+         <origin xyz="0 0 0.05" rpy="0 0 0" />
+      </collision>
+      <inertial>
+         <mass value="0.3" />
+         <origin rpy="0 0 0.05" xyz="0 0 0" />
+         <inertia ixx="0.0003400" iyy="0.0003125" izz="0.0001525" ixy="0" ixz="0" iyz="0" />
+      </inertial>
+   </link>
+   
+   <link name="palm">
+      <visual>
+         <origin xyz="0 0 0.045" rpy="0 0 0" />
+         <geometry>
+            <box size="0.03 0.09 0.09" />
+         </geometry>
+         <material name="Cyan1">
+            <color rgba="0 0.9 0.9 1.0" />
+         </material>
+      </visual>
+      <collision>
+         <geometry>
+            <box size="0.03 0.09 0.09" />
+         </geometry>
+         <origin xyz="0 0 0.045" rpy="0 0 0" />
+      </collision>
+      <inertial>
+         <mass value="0.243" />
+         <origin xyz="0 0 0.045" rpy="0 0 0" />
+         <inertia ixx="0.0003280" iyy="0.0001822" izz="0.0001822" ixy="0" ixz="0" iyz="0" />
+      </inertial>
+      <visual>
+         <origin xyz="0 -0.04 0.035" rpy="0.785975 0 0" />
+         <geometry>
+            <box size="0.03 0.04 0.05" />
+         </geometry>
+         <material name="Cyan1">
+            <color rgba="0 0.9 0.9 1.0" />
+         </material>
+      </visual>
+      <collision>
+         <geometry>
+            <box size="0.03 0.04 0.05" />
+         </geometry>
+         <origin xyz="0 -0.04 0.035" rpy="0.785975 0 0" />
+      </collision>
+      <inertial>
+         <mass value="0.06" />
+         <origin xyz="0 -0.04 0.035" rpy="0.785975 0 0" />
+         <inertia ixx="0.0000205" iyy="0.0000170" izz="0.0000125" ixy="0" ixz="0" iyz="0" />
+      </inertial>
+   </link>
+   <link name="thumb1">
+      <visual>
+         <origin xyz="0 0 0.0175" rpy="0 0 0" />
+         <geometry>
+            <box size="0.02 0.02 0.035" />
+         </geometry>
+         <material name="Cyan1">
+            <color rgba="0 0.9 0.9 1.0" />
+         </material>
+      </visual>
+      <collision>
+         <geometry>
+            <box size="0.02 0.02 0.035" />
+         </geometry>
+         <origin xyz="0 0 0.0175" rpy="0 0 0" />
+      </collision>
+      <inertial>
+         <mass value="0.014" />
+         <origin xyz="0 0 0.0175" rpy="0 0 0" />
+         <inertia ixx="0.0000019" iyy="0.0000019" izz="0.0000009" ixy="0" ixz="0" iyz="0" />
+      </inertial>
+   </link>
+   <link name="thumb2">
+      <visual>
+         <origin xyz="0 0 0.0175" rpy="0 0 0" />
+         <geometry>
+            <box size="0.02 0.02 0.035" />
+         </geometry>
+         <material name="Cyan1">
+            <color rgba="0 0.9 0.9 1.0" />
+         </material>
+      </visual>
+      <collision>
+         <geometry>
+            <box size="0.02 0.02 0.035" />
+         </geometry>
+         <origin xyz="0 0 0.0175" rpy="0 0 0" />
+      </collision>
+      <inertial>
+         <mass value="0.014" />
+         <origin xyz="0 0 0.0175" rpy="0 0 0" />
+         <inertia ixx="0.0000019" iyy="0.0000019" izz="0.0000009" ixy="0" ixz="0" iyz="0" />
+      </inertial>
+   </link>
+   <!-- Finger 1-->
+   <link name="finger1_1">
+      <visual>
+         <origin xyz="0 0 0.0225" rpy="0 0 0" />
+         <geometry>
+            <box size="0.02 0.02 0.045" />
+         </geometry>
+         <material name="Cyan1">
+            <color rgba="0 0.9 0.9 1.0" />
+         </material>
+      </visual>
+      <collision>
+         <geometry>
+            <box size="0.02 0.02 0.045" />
+         </geometry>
+         <origin xyz="0 0 0.0225" rpy="0 0 0" />
+      </collision>
+      <inertial>
+         <mass value="0.018" />
+         <origin xyz="0 0 0.0225" rpy="0 0 0" />
+         <inertia ixx="0.0000019" iyy="0.0000019" izz="0.0000009" ixy="0" ixz="0" iyz="0" />
+      </inertial>
+   </link>
+   <link name="finger1_2">
+      <visual>
+         <origin xyz="0 0 0.0125" rpy="0 0 0" />
+         <geometry>
+            <box size="0.02 0.02 0.025" />
+         </geometry>
+         <material name="Cyan1">
+            <color rgba="0 0.9 0.9 1.0" />
+         </material>
+      </visual>
+      <collision>
+         <geometry>
+            <box size="0.02 0.02 0.025" />
+         </geometry>
+         <origin xyz="0 0 0.0125" rpy="0 0 0" />
+      </collision>
+      <inertial>
+         <mass value="0.014" />
+         <origin xyz="0 0 0.0125" rpy="0 0 0" />
+         <inertia ixx="0.0000019" iyy="0.0000019" izz="0.0000009" ixy="0" ixz="0" iyz="0" />
+      </inertial>
+   </link>
+   <link name="finger1_3">
+      <visual>
+         <origin xyz="0 0 0.01" rpy="0 0 0" />
+         <geometry>
+            <box size="0.02 0.02 0.02" />
+         </geometry>
+         <material name="Cyan1">
+            <color rgba="0 0.9 0.9 1.0" />
+         </material>
+      </visual>
+      <collision>
+         <geometry>
+            <box size="0.02 0.02 0.02" />
+         </geometry>
+         <origin xyz="0 0 0.01" rpy="0 0 0" />
+      </collision>
+      <inertial>
+         <mass value="0.014" />
+         <origin xyz="0 0 0.01" rpy="0 0 0" />
+         <inertia ixx="0.0000019" iyy="0.0000019" izz="0.0000009" ixy="0" ixz="0" iyz="0" />
+      </inertial>
+   </link>
+   <!-- Finger 2-->
+   <link name="finger2_1">
+      <visual>
+         <origin xyz="0 0 0.025" rpy="0 0 0" />
+         <geometry>
+            <box size="0.02 0.02 0.05" />
+         </geometry>
+         <material name="Cyan1">
+            <color rgba="0 0.9 0.9 1.0" />
+         </material>
+      </visual>
+      <collision>
+         <geometry>
+            <box size="0.02 0.02 0.05" />
+         </geometry>
+         <origin xyz="0 0 0.025" rpy="0 0 0" />
+      </collision>
+      <inertial>
+         <mass value="0.014" />
+         <origin xyz="0 0 0.025" rpy="0 0 0" />
+         <inertia ixx="0.0000019" iyy="0.0000019" izz="0.0000009" ixy="0" ixz="0" iyz="0" />
+      </inertial>
+   </link>
+   <link name="finger2_2">
+      <visual>
+         <origin xyz="0 0 0.015" rpy="0 0 0" />
+         <geometry>
+            <box size="0.02 0.02 0.03" />
+         </geometry>
+         <material name="Cyan1">
+            <color rgba="0 0.9 0.9 1.0" />
+         </material>
+      </visual>
+      <collision>
+         <geometry>
+            <box size="0.02 0.02 0.03" />
+         </geometry>
+         <origin xyz="0 0 0.015" rpy="0 0 0" />
+      </collision>
+      <inertial>
+         <mass value="0.014" />
+         <origin xyz="0 0 0.015" rpy="0 0 0" />
+         <inertia ixx="0.0000019" iyy="0.0000019" izz="0.0000009" ixy="0" ixz="0" iyz="0" />
+      </inertial>
+   </link>
+   <link name="finger2_3">
+      <visual>
+         <origin xyz="0 0 0.01" rpy="0 0 0" />
+         <geometry>
+            <box size="0.02 0.02 0.02" />
+         </geometry>
+         <material name="Cyan1">
+            <color rgba="0 0.9 0.9 1.0" />
+         </material>
+      </visual>
+      <collision>
+         <geometry>
+            <box size="0.02 0.02 0.02" />
+         </geometry>
+         <origin xyz="0 0 0.01" rpy="0 0 0" />
+      </collision>
+      <inertial>
+         <mass value="0.014" />
+         <origin xyz="0 0 0.01" rpy="0 0 0" />
+         <inertia ixx="0.0000019" iyy="0.0000019" izz="0.0000009" ixy="0" ixz="0" iyz="0" />
+      </inertial>
+   </link>
+   <!-- Finger 3-->
+   <link name="finger3_1">
+      <visual>
+         <origin xyz="0 0 0.0225" rpy="0 0 0" />
+         <geometry>
+            <box size="0.02 0.02 0.045" />
+         </geometry>
+         <material name="Cyan1">
+            <color rgba="0 0.9 0.9 1.0" />
+         </material>
+      </visual>
+      <collision>
+         <geometry>
+            <box size="0.02 0.02 0.045" />
+         </geometry>
+         <origin xyz="0 0 0.0225" rpy="0 0 0" />
+      </collision>
+      <inertial>
+         <mass value="0.014" />
+         <origin xyz="0 0 0.0225" rpy="0 0 0" />
+         <inertia ixx="0.0000019" iyy="0.0000019" izz="0.0000009" ixy="0" ixz="0" iyz="0" />
+      </inertial>
+   </link>
+   <link name="finger3_2">
+      <visual>
+         <origin xyz="0 0 0.0125" rpy="0 0 0" />
+         <geometry>
+            <box size="0.02 0.02 0.025" />
+         </geometry>
+         <material name="Cyan1">
+            <color rgba="0 0.9 0.9 1.0" />
+         </material>
+      </visual>
+      <collision>
+         <geometry>
+            <box size="0.02 0.02 0.045" />
+         </geometry>
+         <origin xyz="0 0 0.0125" rpy="0 0 0" />
+      </collision>
+      <inertial>
+         <mass value="0.014" />
+         <origin xyz="0 0 0.0125" rpy="0 0 0" />
+         <inertia ixx="0.0000019" iyy="0.0000019" izz="0.0000009" ixy="0" ixz="0" iyz="0" />
+      </inertial>
+   </link>
+   <link name="finger3_3">
+      <visual>
+         <origin xyz="0 0 0.01" rpy="0 0 0" />
+         <geometry>
+            <box size="0.02 0.02 0.02" />
+         </geometry>
+         <material name="Cyan1">
+            <color rgba="0 0.9 0.9 1.0" />
+         </material>
+      </visual>
+      <collision>
+         <geometry>
+            <box size="0.02 0.02 0.02" />
+         </geometry>
+         <origin xyz="0 0 0.01" rpy="0 0 0" />
+      </collision>
+      <inertial>
+         <mass value="0.014" />
+         <origin xyz="0 0 0.01" rpy="0 0 0" />
+         <inertia ixx="0.0000019" iyy="0.0000019" izz="0.0000009" ixy="0" ixz="0" iyz="0" />
+      </inertial>
+   </link>
+   <!-- Finger 4-->
+   <link name="finger4_1">
+      <visual>
+         <origin xyz="0 0 0.0175" rpy="0 0 0" />
+         <geometry>
+            <box size="0.02 0.02 0.035" />
+         </geometry>
+         <material name="Cyan1">
+            <color rgba="0 0.9 0.9 1.0" />
+         </material>
+      </visual>
+      <collision>
+         <geometry>
+            <box size="0.02 0.02 0.035" />
+         </geometry>
+         <origin xyz="0 0 0.0175" rpy="0 0 0" />
+      </collision>
+      <inertial>
+         <mass value="0.014" />
+         <origin xyz="0 0 0.0175" rpy="0 0 0" />
+         <inertia ixx="0.0000019" iyy="0.0000019" izz="0.0000009" ixy="0" ixz="0" iyz="0" />
+      </inertial>
+   </link>
+   <link name="finger4_2">
+      <visual>
+         <origin xyz="0 0 0.01" rpy="0 0 0" />
+         <geometry>
+            <box size="0.02 0.02 0.02" />
+         </geometry>
+         <material name="Cyan1">
+            <color rgba="0 0.9 0.9 1.0" />
+         </material>
+      </visual>
+      <collision>
+         <geometry>
+            <box size="0.02 0.02 0.02" />
+         </geometry>
+         <origin xyz="0 0 0.01" rpy="0 0 0" />
+      </collision>
+      <inertial>
+         <mass value="0.014" />
+         <origin xyz="0 0 0.01" rpy="0 0 0" />
+         <inertia ixx="0.0000019" iyy="0.0000019" izz="0.0000009" ixy="0" ixz="0" iyz="0" />
+      </inertial>
+   </link>
+   <link name="finger4_3">
+      <visual>
+         <origin xyz="0 0 0.01" rpy="0 0 0" />
+         <geometry>
+            <box size="0.02 0.02 0.02" />
+         </geometry>
+         <material name="Cyan1">
+            <color rgba="0 0.9 0.9 1.0" />
+         </material>
+      </visual>
+      <collision>
+         <geometry>
+            <box size="0.02 0.02 0.02" />
+         </geometry>
+         <origin xyz="0 0 0.01" rpy="0 0 0" />
+      </collision>
+      <inertial>
+         <mass value="0.014" />
+         <origin xyz="0 0 0.01" rpy="0 0 0" />
+         <inertia ixx="0.0000019" iyy="0.0000019" izz="0.0000009" ixy="0" ixz="0" iyz="0" />
+      </inertial>
+   </link>
+   <!-- JOINTS -->
+   
+   <joint name="fixed" type="fixed">
+      <parent link="world"/>
+      <child link="forearm"/>
+   </joint>
+  
+   <joint name="forearm_palm_joint" type="revolute">
+      <parent link="forearm" />
+      <child link="palm" />
+      <origin xyz="0 0 0.1" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+      <limit lower="-1.5708" upper="1.5708" effort="100" velocity="3" />
+   </joint>
+   <joint name="palm_thumb1_joint" type="revolute">
+      <parent link="palm" />
+      <child link="thumb1" />
+      <origin xyz="0 -0.06 0.06" rpy="0.785975 0 0" />
+      <axis xyz="0 1 0" />
+      <limit lower="-1.5708" upper="1.5708" effort="100" velocity="3" />
+   </joint>
+   <joint name="palm_thumb2_joint" type="revolute">
+      <parent link="thumb1" />
+      <child link="thumb2" />
+      <origin xyz="0 0 0.035" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+      <limit lower="-1.5708" upper="1.5708" effort="100" velocity="3" />
+   </joint>
+   <!-- Finger 1-->
+   <joint name="palm_finger1_joint" type="revolute">
+      <parent link="palm" />
+      <child link="finger1_1" />
+      <origin xyz="0 -0.035 0.09" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+      <limit lower="-1.5708" upper="1.5708" effort="100" velocity="3" />
+   </joint>
+   <joint name="finger1_1_finger1_2_joint" type="revolute">
+      <parent link="finger1_1" />
+      <child link="finger1_2" />
+      <origin xyz="0 0 0.045" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+      <limit lower="-1.5708" upper="1.5708" effort="100" velocity="3" />
+   </joint>
+   <joint name="finger1_2_finger1_3_joint" type="revolute">
+      <parent link="finger1_2" />
+      <child link="finger1_3" />
+      <origin xyz="0 0 0.02" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+      <limit lower="-1.5708" upper="1.5708" effort="100" velocity="3" />
+   </joint>
+   <!-- Finger 2-->
+   <joint name="palm_finger2_joint" type="revolute">
+      <parent link="palm" />
+      <child link="finger2_1" />
+      <origin xyz="0 -0.0117 0.09" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+      <limit lower="-1.5708" upper="1.5708" effort="100" velocity="3" />
+   </joint>
+   <joint name="finger2_1_finger1_2_joint" type="revolute">
+      <parent link="finger2_1" />
+      <child link="finger2_2" />
+      <origin xyz="0 0 0.05" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+      <limit lower="-1.5708" upper="1.5708" effort="100" velocity="3" />
+   </joint>
+   <joint name="finger2_2_finger2_3_joint" type="revolute">
+      <parent link="finger2_2" />
+      <child link="finger2_3" />
+      <origin xyz="0 0 0.03" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+      <limit lower="-1.5708" upper="1.5708" effort="100" velocity="3" />
+   </joint>
+   <!-- Finger 3-->
+   <joint name="palm_finger3_joint" type="revolute">
+      <parent link="palm" />
+      <child link="finger3_1" />
+      <origin xyz="0 0.0116 0.09" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+      <limit lower="-1.5708" upper="1.5708" effort="100" velocity="3" />
+   </joint>
+   <joint name="finger3_1_finger3_2_joint" type="revolute">
+      <parent link="finger3_1" />
+      <child link="finger3_2" />
+      <origin xyz="0 0 0.045" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+      <limit lower="-1.5708" upper="1.5708" effort="100" velocity="3" />
+   </joint>
+   <joint name="finger3_2_finger3_3_joint" type="revolute">
+      <parent link="finger3_2" />
+      <child link="finger3_3" />
+      <origin xyz="0 0 0.025" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+      <limit lower="-1.5708" upper="1.5708" effort="100" velocity="3" />
+   </joint>
+   <!-- Finger 4-->
+   <joint name="palm_finger4_joint" type="revolute">
+      <parent link="palm" />
+      <child link="finger4_1" />
+      <origin xyz="0 0.0349 0.09" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+      <limit lower="-1.5708" upper="1.5708" effort="100" velocity="3" />
+   </joint>
+   <joint name="finger4_1_finger4_2_joint" type="revolute">
+      <parent link="finger4_1" />
+      <child link="finger4_2" />
+      <origin xyz="0 0 0.035" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+      <limit lower="-1.5708" upper="1.5708" effort="100" velocity="3" />
+   </joint>
+   <joint name="finger4_2_finger4_3_joint" type="revolute">
+      <parent link="finger4_2" />
+      <child link="finger4_3" />
+      <origin xyz="0 0 0.02" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+      <limit lower="-1.5708" upper="1.5708" effort="100" velocity="3" />
+   </joint>
+   
+  <!-- control plugin-->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+      <legacyModeNS>true</legacyModeNS>
+    </plugin>
+  </gazebo>
+
+
+  <!-- Transmissions -->
+  <transmission name="tran_forearm_palm_joint">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="forearm_palm_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_forearm_palm_joint">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran_palm_thumb1_joint">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="palm_thumb1_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_palm_thumb1_joint">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran_palm_thumb2_joint">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="palm_thumb2_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_palm_thumb2_joint">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran_palm_finger1_joint">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="palm_finger1_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_palm_finger1_joint">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  
+  <transmission name="tran_finger1_1_finger1_2_joint">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="finger1_1_finger1_2_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_finger1_1_finger1_2_joint">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran_finger1_2_finger1_3_joint">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="finger1_2_finger1_3_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_finger1_2_finger1_3_joint">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  
+  <transmission name="tran_palm_finger2_joint">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="palm_finger2_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_palm_finger2_joint">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran_finger2_1_finger1_2_joint">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="finger2_1_finger1_2_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_finger2_1_finger1_2_joint">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  
+  <transmission name="tran_finger2_2_finger2_3_joint">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="finger2_2_finger2_3_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_finger2_2_finger2_3_joint">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  
+  <transmission name="tran_palm_finger3_joint">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="palm_finger3_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_palm_finger3_joint">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran_finger3_1_finger3_2_joint">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="finger3_1_finger3_2_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_finger3_1_finger3_2_joint">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran_finger3_2_finger3_3_joint">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="finger3_2_finger3_3_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_finger3_2_finger3_3_joint">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran_palm_finger4_joint">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="palm_finger4_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_palm_finger4_joint">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran_finger4_1_finger4_2_joint">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="finger4_1_finger4_2_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_finger4_1_finger4_2_joint">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>  
+    
+  <transmission name="tran_finger4_2_finger4_3_joint">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="finger4_2_finger4_3_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_finger4_2_finger4_3_joint">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+</robot>
+
+
