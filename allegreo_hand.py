@@ -20,7 +20,7 @@ planeId = p.loadURDF("plane.urdf")
 #sawyerwgg50 = p.loadURDF("./haptics_examples\\robots\\sawyer_wsg50.urdf")
 #sawyerallegro = p.loadURDF("./haptics_examples\\robots\\sawyer_allegro.urdf")
 #ur5 = p.loadURDF("./haptics_examples\\ur5\\urdf\\ur5.urdf")
-ur5_allegro = p.loadURDF("\\haptics_examples\\ur5_allegro\\ur5_allegro.urdf",[0,0,0], useFixedBase=1)
+ur5_allegro = p.loadURDF("./haptics_examples\\ur5_allegro\\ur5_allegro.urdf",[0,0,0], useFixedBase=1)
 noJoints = p.getNumJoints(ur5_allegro)
 
 
