@@ -1,0 +1,679 @@
+<?xml version="1.0" ?>
+<robot name="ur_allegro_robot">
+
+	<link name="ur_base_link"/>
+
+	<joint name="shoulder_pan_joint" type="revolute">
+		<parent link="ur_base_link"/>
+		<child link="shoulder_link"/>
+		<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.1"/>
+		<axis xyz="0.0 0.0 1.0"/>
+		<limit effort="10.0" lower="-3.14" upper="3.14" velocity="1.0"/>
+	</joint>
+
+	<link name="shoulder_link">
+		<visual>
+			<geometry>
+				<cylinder length="0.1" radius="0.1"/>
+			</geometry>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 -0.05"/>
+		</visual>
+		<collision>
+			<geometry>
+				<cylinder length="0.1" radius="0.1"/>
+			</geometry>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 -0.05"/>
+		</collision>
+	</link>
+
+	<joint name="shoulder_lift_joint" type="revolute">
+		<parent link="shoulder_link"/>
+		<child link="upper_arm_link"/>
+		<origin rpy="0.0 0.0 0.0" xyz="0.0 0.1 0.0"/>
+		<axis xyz="0.0 1.0 0.0"/>
+		<limit effort="10.0" lower="-3.14" upper="3.14" velocity="1.0"/>
+	</joint>
+
+	<link name="upper_arm_link">
+		<visual>
+			<geometry>
+				<cylinder length="0.5" radius="0.05"/>
+			</geometry>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.25"/>
+		</visual>
+		<collision>
+			<geometry>
+				<cylinder length="0.5" radius="0.05"/>
+			</geometry>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.25"/>
+		</collision>
+	</link>
+
+	<joint name="elbow_joint" type="revolute">
+		<parent link="upper_arm_link"/>
+		<child link="forearm_link"/>
+		<origin rpy="0.0 0.0 0.0" xyz="0.0 -0.1 0.5"/>
+		<axis xyz="0.0 -1.0 0.0"/>
+		<limit effort="10.0" lower="-3.14" upper="3.14" velocity="1.0"/>
+	</joint>
+
+	<link name="forearm_link">
+		<visual>
+			<geometry>
+				<cylinder length="0.5" radius="0.03"/>
+			</geometry>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.25"/>
+		</visual>
+		<collision>
+			<geometry>
+				<cylinder length="0.5" radius="0.03"/>
+			</geometry>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.25"/>
+		</collision>
+	</link>
+
+	<joint name="wrist_1_joint" type="revolute">
+		<parent link="forearm_link"/>
+		<child link="wrist_1_link"/>
+		<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.5"/>
+		<axis xyz="0.0 1.0 0.0"/>
+		<limit effort="10.0" lower="-3.14" upper="3.14" velocity="1.0"/>
+	</joint>
+
+	<link name="wrist_1_link">
+		<visual>
+			<geometry>
+				<cylinder length="0.1" radius="0.03"/>
+			</geometry>
+			<origin rpy="-1.57 0.0 0.0" xyz="0.0 0.05 0.0"/>
+		</visual>
+		<collision>
+			<geometry>
+				<cylinder length="0.1" radius="0.03"/>
+			</geometry>
+			<origin rpy="-1.57 0.0 0.0" xyz="0.0 0.05 0.0"/>
+		</collision>
+	</link>
+
+	<joint name="wrist_2_joint" type="revolute">
+		<parent link="wrist_1_link"/>
+		<child link="wrist_2_link"/>
+		<origin rpy="0.0 0.0 0.0" xyz="0.0 0.1 0.0"/>
+		<axis xyz="0.0 0.0 1.0"/>
+		<limit effort="10.0" lower="-3.14" upper="3.14" velocity="1.0"/>
+	</joint>
+
+	<link name="wrist_2_link">
+		<visual>
+			<geometry>
+				<cylinder length="0.1" radius="0.03"/>
+			</geometry>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.05"/>
+		</visual>
+		<collision>
+			<geometry>
+				<cylinder length="0.1" radius="0.03"/>
+			</geometry>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.05"/>
+		</collision>
+	</link>
+
+	<joint name="wrist_3_joint" type="revolute">
+		<parent link="wrist_2_link"/>
+		<child link="wrist_3_link"/>
+		<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.1"/>
+		<axis xyz="0.0 1.0 0.0"/>
+		<limit effort="10.0" lower="-3.14" upper="3.14" velocity="1.0"/>
+	</joint>
+
+	<link name="wrist_3_link">
+		<visual>
+			<geometry>
+				<cylinder length="0.1" radius="0.03"/>
+			</geometry>
+			<origin rpy="-1.57 0.0 0.0" xyz="0.0 0.05 0.0"/>
+		</visual>
+		<collision>
+			<geometry>
+				<cylinder length="0.1" radius="0.03"/>
+			</geometry>
+			<origin rpy="-1.57 0.0 0.0" xyz="0.0 0.05 0.0"/>
+		</collision>
+	</link>
+
+	<joint name="ee_fixed_joint" type="fixed">
+		<parent link="wrist_3_link"/>
+		<child link="ee_link"/>
+		<origin rpy="0.0 0.0 1.57" xyz="0.0 0.1 0.0"/>
+	</joint>
+
+	<link name="ee_link">
+		<visual>
+			<geometry>
+				<cylinder length="0.01" radius="0.06"/>
+			</geometry>
+			<origin rpy="0.0 -1.57 0.0" xyz="0.0 0.0 0.0"/>
+		</visual>
+		<collision>
+			<geometry>
+				<cylinder length="0.01" radius="0.06"/>
+			</geometry>
+			<origin rpy="0.0 -1.57 0.0" xyz="0.0 0.0 0.0"/>
+		</collision>
+	</link>
+
+
+
+
+
+
+	<xacro:property name="base_link_z" value="0"/>
+
+	<!-- Allergo hand -->
+	<link name="hand_root">
+			<origin xyz="0 0 0"/>
+		</link>
+
+		<joint name="root_to_base" type="fixed">
+			<parent link="hand_root"/>
+			<child link="base_link"/>
+			<origin xyz="0 0 ${base_link_z}"/>
+		</joint>
+
+
+	 <link name="base_link">
+		<visual>
+			<geometry>
+				<mesh filename="package://allegro_hand_description/meshes/base_link_left.STL"/>
+			</geometry>
+			<!-- LEFT -->
+			<origin rpy="-1.5707963259 0 0" xyz="0 0 0 "/>
+			<!-- RIGHT -->
+			<!--<origin rpy="0 0 0" xyz="0 0 0 "/>-->
+			<material name="black">
+				<color rgba="0.2 0.2 0.2 1"/>
+			</material>
+		</visual>
+		<collision>
+			<origin rpy="0 0 0" xyz="-0.009300 0 -0.0475"/>
+			<geometry>
+				<box size="0.0408 0.1130 0.095"/>
+			</geometry>
+		</collision>
+	</link>
+	<!-- ============================================================================= -->
+	<!-- FINGERS -->
+	<!-- RIGHT HAND due to which finger is number 0 -->
+	<!-- for LEFT HAND switch the sign of the **offset_origin_y** and **finger_angle_r** parameters-->
+	<link name="link_8.0">
+		<visual>
+			<geometry>
+				<mesh filename="package://allegro_hand_description/meshes/link_0.0.STL"/>
+			</geometry>
+			<material name="black"/>
+		</visual>
+		<collision>
+			<geometry>
+				<box size="0.0196 0.0275 0.0164"/>
+			</geometry>
+			<origin rpy="0 0 0" xyz="0 0 0.0082"/>
+		</collision>
+	</link>
+	<joint name="joint_8.0" type="revolute">
+		<axis xyz="0 0 1"/>
+		<limit effort="0" lower="-0.47" upper="0.47" velocity="0"/>
+		<parent link="base_link"/>
+		<child link="link_8.0"/>
+		<origin rpy="-0.08726646255 0 0" xyz="0 0.0435 -0.001542"/>
+	</joint>
+	<link name="link_9.0">
+		<visual>
+			<geometry>
+				<mesh filename="package://allegro_hand_description/meshes/link_1.0.STL"/>
+			</geometry>
+			<material name="black"/>
+		</visual>
+		<collision>
+			<geometry>
+				<box size="0.0196 0.0275 0.054"/>
+			</geometry>
+			<origin rpy="0 0 0" xyz="0 0 0.027"/>
+		</collision>
+	</link>
+	<joint name="joint_9.0" type="revolute">
+		<limit effort="0" lower="-0.196" upper="1.61" velocity="0"/>
+		<axis xyz="0 1 0"/>
+		<parent link="link_8.0"/>
+		<child link="link_9.0"/>
+		<origin xyz="0 0 0.0164"/>
+	</joint>
+	<link name="link_10.0">
+		<visual>
+			<geometry>
+				<mesh filename="package://allegro_hand_description/meshes/link_2.0.STL"/>
+			</geometry>
+			<material name="black"/>
+		</visual>
+		<collision>
+			<geometry>
+				<box size="0.0196 0.0275 0.0384"/>
+			</geometry>
+			<origin rpy="0 0 0" xyz="0 0 0.0192"/>
+		</collision>
+	</link>
+	<joint name="joint_10.0" type="revolute">
+		<axis xyz="0 1 0"/>
+		<limit effort="0" lower="-0.174" upper="1.709" velocity="0"/>
+		<parent link="link_9.0"/>
+		<child link="link_10.0"/>
+		<origin xyz="0 0 0.054"/>
+	</joint>
+	<link name="link_11.0">
+		<visual>
+			<geometry>
+				<mesh filename="package://allegro_hand_description/meshes/link_3.0.STL"/>
+			</geometry>
+			<material name="black"/>
+		</visual>
+		<collision>
+			<geometry>
+				<box size="0.0196 0.0275 0.0267"/>
+			</geometry>
+			<origin rpy="0 0 0" xyz="0 0 0.01335"/>
+		</collision>
+	</link>
+	<joint name="joint_11.0" type="revolute">
+		<axis xyz="0 1 0"/>
+		<limit effort="0" lower="-0.227" upper="1.618" velocity="0"/>
+		<parent link="link_10.0"/>
+		<child link="link_11.0"/>
+		<origin xyz="0 0 0.0384"/>
+	</joint>
+	<link name="link_11.0_tip">
+		<visual>
+			<geometry>
+				<mesh filename="package://allegro_hand_description/meshes/link_3.0_tip.STL"/>
+			</geometry>
+			<material name="white">
+				<color rgba=".9 .9 .9 1"/>
+			</material>
+		</visual>
+		<collision>
+			<geometry>
+				<sphere radius="0.012"/>
+			</geometry>
+		</collision>
+	</link>
+	<joint name="joint_11.0_tip" type="fixed">
+		<parent link="link_11.0"/>
+		<child link="link_11.0_tip"/>
+		<origin rpy="0 0 0" xyz="0 0 0.0267"/>
+	</joint>
+	<link name="link_4.0">
+		<visual>
+			<geometry>
+				<mesh filename="package://allegro_hand_description/meshes/link_0.0.STL"/>
+			</geometry>
+			<material name="black"/>
+		</visual>
+		<collision>
+			<geometry>
+				<box size="0.0196 0.0275 0.0164"/>
+			</geometry>
+			<origin rpy="0 0 0" xyz="0 0 0.0082"/>
+		</collision>
+	</link>
+
+
+
+
+
+	
+	<joint name="joint_4.0" type="revolute">
+		<axis xyz="0 0 1"/>
+		<limit effort="0" lower="-0.47" upper="0.47" velocity="0"/>
+		<parent link="base_link"/>
+		<child link="link_4.0"/>
+		<origin rpy="0.0 0 0" xyz="0 0 0.0007"/>
+	</joint>
+	<link name="link_5.0">
+		<visual>
+			<geometry>
+				<mesh filename="package://allegro_hand_description/meshes/link_1.0.STL"/>
+			</geometry>
+			<material name="black"/>
+		</visual>
+		<collision>
+			<geometry>
+				<box size="0.0196 0.0275 0.054"/>
+			</geometry>
+			<origin rpy="0 0 0" xyz="0 0 0.027"/>
+		</collision>
+	</link>
+	<joint name="joint_5.0" type="revolute">
+		<limit effort="0" lower="-0.196" upper="1.61" velocity="0"/>
+		<axis xyz="0 1 0"/>
+		<parent link="link_4.0"/>
+		<child link="link_5.0"/>
+		<origin xyz="0 0 0.0164"/>
+	</joint>
+	<link name="link_6.0">
+		<visual>
+			<geometry>
+				<mesh filename="package://allegro_hand_description/meshes/link_2.0.STL"/>
+			</geometry>
+			<material name="black"/>
+		</visual>
+		<collision>
+			<geometry>
+				<box size="0.0196 0.0275 0.0384"/>
+			</geometry>
+			<origin rpy="0 0 0" xyz="0 0 0.0192"/>
+		</collision>
+	</link>
+	<joint name="joint_6.0" type="revolute">
+		<axis xyz="0 1 0"/>
+		<limit effort="0" lower="-0.174" upper="1.709" velocity="0"/>
+		<parent link="link_5.0"/>
+		<child link="link_6.0"/>
+		<origin xyz="0 0 0.054"/>
+	</joint>
+	<link name="link_7.0">
+		<visual>
+			<geometry>
+				<mesh filename="package://allegro_hand_description/meshes/link_3.0.STL"/>
+			</geometry>
+			<material name="black"/>
+		</visual>
+		<collision>
+			<geometry>
+				<box size="0.0196 0.0275 0.0267"/>
+			</geometry>
+			<origin rpy="0 0 0" xyz="0 0 0.01335"/>
+		</collision>
+	</link>
+	<joint name="joint_7.0" type="revolute">
+		<axis xyz="0 1 0"/>
+		<limit effort="0" lower="-0.227" upper="1.618" velocity="0"/>
+		<parent link="link_6.0"/>
+		<child link="link_7.0"/>
+		<origin xyz="0 0 0.0384"/>
+	</joint>
+	<link name="link_7.0_tip">
+		<visual>
+			<geometry>
+				<mesh filename="package://allegro_hand_description/meshes/link_3.0_tip.STL"/>
+			</geometry>
+			<material name="white">
+				<color rgba=".9 .9 .9 1"/>
+			</material>
+		</visual>
+		<collision>
+			<geometry>
+				<sphere radius="0.012"/>
+			</geometry>
+		</collision>
+	</link>
+	<joint name="joint_7.0_tip" type="fixed">
+		<parent link="link_7.0"/>
+		<child link="link_7.0_tip"/>
+		<origin rpy="0 0 0" xyz="0 0 0.0267"/>
+	</joint>
+	<link name="link_0.0">
+		<visual>
+			<geometry>
+				<mesh filename="package://allegro_hand_description/meshes/link_0.0.STL"/>
+			</geometry>
+			<material name="black"/>
+		</visual>
+		<collision>
+			<geometry>
+				<box size="0.0196 0.0275 0.0164"/>
+			</geometry>
+			<origin rpy="0 0 0" xyz="0 0 0.0082"/>
+		</collision>
+	</link>
+	<joint name="joint_0.0" type="revolute">
+		<axis xyz="0 0 1"/>
+		<limit effort="0" lower="-0.47" upper="0.47" velocity="0"/>
+		<parent link="base_link"/>
+		<child link="link_0.0"/>
+		<origin rpy="0.08726646255 0 0" xyz="0 -0.0435 -0.001542"/>
+	</joint>
+	<link name="link_1.0">
+		<visual>
+			<geometry>
+				<mesh filename="package://allegro_hand_description/meshes/link_1.0.STL"/>
+			</geometry>
+			<material name="black"/>
+		</visual>
+		<collision>
+			<geometry>
+				<box size="0.0196 0.0275 0.054"/>
+			</geometry>
+			<origin rpy="0 0 0" xyz="0 0 0.027"/>
+		</collision>
+	</link>
+	<joint name="joint_1.0" type="revolute">
+		<limit effort="0" lower="-0.196" upper="1.61" velocity="0"/>
+		<axis xyz="0 1 0"/>
+		<parent link="link_0.0"/>
+		<child link="link_1.0"/>
+		<origin xyz="0 0 0.0164"/>
+	</joint>
+	<link name="link_2.0">
+		<visual>
+			<geometry>
+				<mesh filename="package://allegro_hand_description/meshes/link_2.0.STL"/>
+			</geometry>
+			<material name="black"/>
+		</visual>
+		<collision>
+			<geometry>
+				<box size="0.0196 0.0275 0.0384"/>
+			</geometry>
+			<origin rpy="0 0 0" xyz="0 0 0.0192"/>
+		</collision>
+	</link>
+	<joint name="joint_2.0" type="revolute">
+		<axis xyz="0 1 0"/>
+		<limit effort="0" lower="-0.174" upper="1.709" velocity="0"/>
+		<parent link="link_1.0"/>
+		<child link="link_2.0"/>
+		<origin xyz="0 0 0.054"/>
+	</joint>
+	<link name="link_3.0">
+		<visual>
+			<geometry>
+				<mesh filename="package://allegro_hand_description/meshes/link_3.0.STL"/>
+			</geometry>
+			<material name="black"/>
+		</visual>
+		<collision>
+			<geometry>
+				<box size="0.0196 0.0275 0.0267"/>
+			</geometry>
+			<origin rpy="0 0 0" xyz="0 0 0.01335"/>
+		</collision>
+	</link>
+	<joint name="joint_3.0" type="revolute">
+		<axis xyz="0 1 0"/>
+		<limit effort="0" lower="-0.227" upper="1.618" velocity="0"/>
+		<parent link="link_2.0"/>
+		<child link="link_3.0"/>
+		<origin xyz="0 0 0.0384"/>
+	</joint>
+	<link name="link_3.0_tip">
+		<visual>
+			<geometry>
+				<mesh filename="package://allegro_hand_description/meshes/link_3.0_tip.STL"/>
+			</geometry>
+			<material name="white">
+				<color rgba=".9 .9 .9 1"/>
+			</material>
+		</visual>
+		<collision>
+			<geometry>
+				<sphere radius="0.012"/>
+			</geometry>
+		</collision>
+	</link>
+	<joint name="joint_3.0_tip" type="fixed">
+		<parent link="link_3.0"/>
+		<child link="link_3.0_tip"/>
+		<origin rpy="0 0 0" xyz="0 0 0.0267"/>
+	</joint>
+	<!-- THUMB -->
+	<!--
+<xacro:thumb_right
+	finger_num=     "3" 
+	offset_origin_x=  "-0.0182" 
+	offset_origin_y=  "0.019333" 
+	offset_origin_z=  "-0.045987"
+	
+	
+	finger_angle_r=   "0"
+	finger_angle_p=   "-${95*DEG2RAD}"  
+	finger_angle_y=   "-${90*DEG2RAD}"
+/>
+-->
+	<!--
+	finger_angle_r=   "${90*DEG2RAD}"
+	finger_angle_p=   "-${100*DEG2RAD}" 
+	finger_angle_y=   "${0*DEG2RAD}"
+	-->
+	<link name="link_12.0">
+		<visual>
+			<geometry>
+				<!-- RIGHT -->
+				<!-- <mesh filename="package://allegro_hand_description/meshes/link_12.0_right.STL" /> -->
+				<!-- LEFT -->
+				<mesh filename="package://allegro_hand_description/meshes/link_12.0_left.STL"/>
+			</geometry>
+			<material name="black">
+				<color rgba=".2 .2 .2 1"/>
+			</material>
+			<origin rpy="3.1415926518 0 0" xyz="0 0 0"/>
+		</visual>
+		<collision>
+			<geometry>
+				<box size="0.0358 0.034 0.0455"/>
+			</geometry>
+			<!-- RIGHT -->
+			<!-- <origin rpy="0 0 0" xyz="${-0.0358/2+0.0} ${.018/2} ${.029/2}"/> -->
+			<!-- LEFT -->
+			<origin rpy="0 0 0" xyz="-0.0179 -0.009 0.0145"/>
+		</collision>
+	</link>
+	<joint name="joint_12.0" type="revolute">
+		<axis xyz="+1 0 0"/>
+		<limit effort="0" lower="0.263" upper="1.396" velocity="0"/>
+		<parent link="base_link"/>
+		<child link="link_12.0"/>
+		<origin rpy="0 -1.65806278845 1.5707963259" xyz="-0.0182 -0.019333 -0.045987"/>
+	</joint>
+	<link name="link_13.0">
+		<visual>
+			<geometry>
+				<mesh filename="package://allegro_hand_description/meshes/link_13.0.STL"/>
+			</geometry>
+			<material name="black">
+				<color rgba=".2 .2 .2 1"/>
+			</material>
+		</visual>
+		<collision>
+			<geometry>
+				<box size="0.0196 0.0275 0.0177"/>
+			</geometry>
+			<origin rpy="0 0 0" xyz="0 0 0.00885"/>
+		</collision>
+	</link>
+	<joint name="joint_13.0" type="revolute">
+		<axis xyz="0 0 -1"/>
+		<limit effort="0" lower="-0.105" upper="1.163" velocity="0"/>
+		<parent link="link_12.0"/>
+		<child link="link_13.0"/>
+		<!-- RIGHT -->
+		<!-- <origin xyz="-0.027 0.005 0.0399"/> -->
+		<!-- LEFT -->
+		<origin xyz="-0.027 -0.005 0.0399"/>
+	</joint>
+	<link name="link_14.0">
+		<visual>
+			<geometry>
+				<mesh filename="package://allegro_hand_description/meshes/link_14.0.STL"/>
+			</geometry>
+			<material name="black">
+				</material>
+		</visual>
+		<collision>
+			<geometry>
+				<box size="0.0196 0.0275 0.0514"/>
+			</geometry>
+			<origin rpy="0 0 0" xyz="0 0 0.0257"/>
+		</collision>
+	</link>
+	<joint name="joint_14.0" type="revolute">
+		<axis xyz="0 1 0"/>
+		<limit effort="0" lower="-0.189" upper="1.644" velocity="0"/>
+		<parent link="link_13.0"/>
+		<child link="link_14.0"/>
+		<origin xyz="0 0 0.0177"/>
+	</joint>
+	<link name="link_15.0">
+		<visual>
+			<geometry>
+				<mesh filename="package://allegro_hand_description/meshes/link_15.0.STL"/>
+			</geometry>
+			<material name="black">
+			</material>
+		</visual>
+		<collision>
+			<geometry>
+				<box size="0.0196 0.0275 0.0423"/>
+			</geometry>
+			<origin rpy="0 0 0" xyz="0 0 0.02115"/>
+		</collision>
+	</link>
+	<joint name="joint_15.0" type="revolute">
+		<axis xyz="0 1 0"/>
+		<limit effort="0" lower="-0.162" upper="1.719" velocity="0"/>
+		<parent link="link_14.0"/>
+		<child link="link_15.0"/>
+		<origin xyz="0 0 0.0514"/>
+	</joint>
+	<link name="link_15.0_tip">
+		<visual>
+			<geometry>
+				<mesh filename="package://allegro_hand_description/meshes/link_15.0_tip.STL"/>
+			</geometry>
+			<material name="white">
+				<color rgba=".9 .9 .9 1"/>
+			</material>
+		</visual>
+		<collision>
+			<geometry>
+				<sphere radius="0.012"/>
+			</geometry>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+		</collision>
+	</link>
+	<joint name="joint_15.0_tip" type="fixed">
+		<parent link="link_15.0"/>
+		<child link="link_15.0_tip"/>
+		<origin rpy="0 0 0" xyz="0 0 0.0423"/>
+		<!--0.0267000000000005-->
+	</joint>
+
+
+	<!-- ##################. Connect Allegro to Sawyer ################## -->
+	<joint name="ur5arm_allegro_joint" type="fixed">
+		<parent link="ee_link"/>
+		<child link="hand_root"/>
+		<origin rpy="0.0 0.0 1.5708" xyz="0.0 0.0 0.15"/>
+	</joint>
+
+
+
+</robot>
+

@@ -1,0 +1,28 @@
+#plots
+import matplotlib.pyplot as plt
+import pandas as pd
+
+
+
+DATA = []
+DATA.append([0,float('inf'),20])
+DATA.append([1,14.6696748733521,15.4653015032291])
+DATA.append([2,13.8353683948517,13.746844538975])
+DATA.append([3,13.1028687953949,12.6562852183088])
+DATA.append([4,12.5013101100921,11.8421115727397])
+DATA.append([5,11.6125719547272,11.1866345095532])
+DATA.append([6,10.9396078586578,10.6351096699254])
+DATA.append([7,10.1122810840607,10.1573601497421])
+DATA.append([8,9.4939866065979,9.73488809327318])
+DATA.append([9,8.28579926490784,9.35549222784175])
+DATA.append([9.8,7.16464042663574,9.07719691687453])
+
+
+x_ = np.arange(0,10)
+y = -14941.74 + (29.97386 - -14941.74)/(1 + (/55778.08)^0.1737921)^0.006951804
+x = pd.DataFrame(DATA, columns =['X','Y','Y_SMOOTH'])
+
+print(x.head())
+plt.scatter(x['X'], x['Y'])
+plt.plot(x['X'], x['Y_SMOOTH'])
+plt.show()

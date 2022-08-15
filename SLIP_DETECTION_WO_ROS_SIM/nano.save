@@ -1,0 +1,2 @@
+print(pybullet_data.getDataPath())
+planeId = p.loadURDF("plane.urdf")

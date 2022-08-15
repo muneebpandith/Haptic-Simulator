@@ -1,0 +1,3 @@
+#load the algorithm/model,
+THIS FILE WILL READ THE CURRENT /for_mec,
+as soon as it detects the fall, publish on /for_sim in the form of HAPTIC GLOVE joint values otherwise publish empty values
