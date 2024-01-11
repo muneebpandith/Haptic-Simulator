@@ -9,3 +9,6 @@
 - ROS
 - Pytorch
 - Scikit Learn
+
+
+# The dataset/code/simulator is the proprietory of Haptics Lab, IIT Delhi. This cannot be used without my written permission.
